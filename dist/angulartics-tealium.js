@@ -16783,7 +16783,6 @@ function onLoad(script, fn) {
   Configuration.$inject = ["$windowProvider", "$analyticsProvider", "_"];
   var tealiumModule = require('../angulartics-tealium.module');
 
-  /* @ngInject */
   function Configuration($windowProvider, $analyticsProvider, _) {
 
     var $window = $windowProvider.$get();
@@ -16869,7 +16868,6 @@ function onLoad(script, fn) {
   UtagService.$inject = ["$window"];
   var tealiumModule = require('../angulartics-tealium.module');
 
-  /* @ngInject */
   function UtagService($window) {
 
     var service = {

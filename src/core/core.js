@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
+  Configuration.$inject = ["$windowProvider", "$analyticsProvider", "_"];
   var tealiumModule = require('../angulartics-tealium.module');
 
-  /* @ngInject */
   function Configuration($windowProvider, $analyticsProvider, _) {
 
     var $window = $windowProvider.$get();

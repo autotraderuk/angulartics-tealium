@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
+  UtagService.$inject = ["$window"];
   var tealiumModule = require('../angulartics-tealium.module');
 
-  /* @ngInject */
   function UtagService($window) {
 
     var service = {
