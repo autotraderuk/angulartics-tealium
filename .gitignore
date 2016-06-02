@@ -1,0 +1,14 @@
+# Project
+.idea
+*.ipr
+*.iws
+*.iml
+*.sublime-*
+
+# Generated
+/logs
+/node_modules
+/build
+/.tmp
+npm-debug.log
+.DS_Store
