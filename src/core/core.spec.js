@@ -5,6 +5,9 @@
     var $analyticsProvider;
     var $windowProvider;
     var $window;
+    var UtagService;
+    var $q;
+    var $scope;
 
     var pageTrackFunction;
     var eventTrackFunction;
@@ -27,7 +30,11 @@
         spyOn(_$windowProvider_, '$get').and.returnValue($window);
       });
       angular.mock.module('angulartics.tealium');
-      angular.mock.inject();
+      angular.mock.inject(function(_UtagService_, _$q_, _$rootScope_){
+        UtagService = _UtagService_;
+        $q = _$q_;
+        $scope = _$rootScope_.$new();
+      });
     });
 
     it('Module should register event, page and properties functions', function() {
@@ -49,8 +56,13 @@
       $window.utag = utag;
       $window.utag_data = utagData;
 
+      var deferred = $q.defer();
+      UtagService.loaded = deferred.promise;
+      deferred.resolve(true);
+
       //when
       pageTrackFunction(path);
+      $scope.$apply();
 
       //then
       var utagDataWithPath = {expected: "data", page_path: path};
@@ -66,8 +78,13 @@
       $window.utag = utag;
       $window.utag_data = {other: "data"};
 
+      var deferred = $q.defer();
+      UtagService.loaded = deferred.promise;
+      deferred.resolve(true);
+
       //when
       eventTrackFunction(action, properties);
+      $scope.$apply();
 
       //then
       var propertiesWithEventSource = {expected: "data", event_source: action};

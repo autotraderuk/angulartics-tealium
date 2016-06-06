@@ -3,8 +3,8 @@
   
   require('angulartics');
   require('./constants');
-  require('./core');
   require('./utag');
+  require('./core');
   require('./angulartics-tealium.module');
 
 }());
